@@ -1,12 +1,14 @@
-# FitWeather CLI - A Beginner's Guide to Weather-Based Fitness Recommendations in Go
+# FitWeather CLI 
+## A Beginner's Guide to Weather-Based Fitness Recommendations in Go
 
-## 1. Title & Objective
+## 1. FitWeatherCLI
 
 **Technology chosen:** Go, also called Golang.
 
 **Why Go?** Go is a good fit for command-line tools because it has a simple syntax, fast builds, strong standard-library support, and built-in packages for HTTP requests and JSON parsing. This project uses only Go's standard library, including `net/http`, `encoding/json`, `os`, and `strings`.
 
-**End goal:** Build a CLI application that accepts a city name, fetches current weather data from the OpenWeatherMap API, and prints a fitness recommendation:
+### Objectives
+**End goal:** Build an application that accepts a city name, fetches current weather data from the OpenWeatherMap API, and prints a fitness recommendation:
 
 - Clear or sunny weather: `Outdoor Sprint`
 - Rain, drizzle, thunderstorm, or snow: `Indoor HIIT Circuit`
@@ -81,6 +83,7 @@ export OPENWEATHERMAP_API_KEY="your_api_key_here"
 
 Windows PowerShell:
 
+Copy the line of code below on your terminal and  replace ``your_api_key_here`` with your actual API Key from ``OpenWeatherMap``
 ```powershell
 $env:OPENWEATHERMAP_API_KEY="your_api_key_here"
 ```
@@ -93,7 +96,7 @@ From the project folder:
 go run . Nairobi
 ```
 
-For city names with spaces, either pass the words normally or use quotes:
+For city names with spaces, either pass the words normally or use quotes (especially for a 2-word name):
 
 ```bash
 go run . "New York"
@@ -167,6 +170,14 @@ Condition: Clear
 Fitness Recommendation: Outdoor Sprint
 ```
 
+Example:
+On running: ```go run . Nairobi```
+
+Output:
+
+![ Image of Terminal Output](https://res.cloudinary.com/dgu9ietkl/image/upload/v1777461776/TerminalOutput_spzc6q.png)
+
+
 Rainy or snowy expected output:
 
 ```text
@@ -182,13 +193,75 @@ Fitness Recommendation: Indoor HIIT Circuit
 **Prompt used:**
 
 ```text
-generate a Go CLI application that takes a city name as an argument. The app should use the net/http package to fetch current weather data from the OpenWeatherMap API. Parse the JSON response and print a fitness recommendation to the terminal: if it's clear/sunny, suggest 'Outdoor Sprint'; if it's raining or snowing, suggest 'Indoor HIIT Circuit'
+Generate a Go CLI application that takes a city name as an argument. The app should use the net/http package to fetch current weather data from the OpenWeatherMap API. Parse the JSON response and print a fitness recommendation to the terminal: if it's clear/sunny, suggest 'Outdoor Sprint'; if it's raining or snowing, suggest 'Indoor HIIT Circuit'
 ```
 
-**Link to the curriculum for the prompt:**
+**Curriculum for the prompt:**
+````
+Go CLI + API Integration Curriculum: Weather-Based Fitness Recommendation App
+Learning Objectives:
 
-Add your course, assignment, or curriculum link here.
+Expected outcome:
+• Build a Go command-line application.
+• Read a city name from terminal arguments.
+• Store and read an API key using environment variables.
+• Use net/http to call the OpenWeatherMap API.
+•Parse JSON using encoding/json.
+•Use conditional logic to generate fitness recommendations.
+    - Handle common errors such as missing input, missing API key, failed API calls, and invalid JSON.
 
+Modules
+
+1. Go Basics
+◦ package main
+◦ func main()
+◦ variables
+◦ functions
+◦ if / else
+◦ string handling
+
+2. Command-Line Arguments
+◦ Using os.Args
+◦ Accepting city names like:
+    go run . Nairobi
+    go run . "New York"
+
+3. Environment Variables
+◦ Storing the OpenWeatherMap API key securely
+◦ Reading it with:
+    os.Getenv("OPENWEATHERMAP_API_KEY")
+4. HTTP Requests with net/http
+◦ Sending a GET request
+◦ Handling request errors
+◦ Closing the response body with defer
+
+5. JSON Parsing
+◦ Creating structs that match the API response
+◦ Using json.NewDecoder(resp.Body).Decode(&data)
+
+6. Decision Logic
+◦ If weather is clear or sunny:
+    Outdoor Sprint
+◦ If weather is rain or snow:
+    Indoor HIIT Circuit
+◦ Otherwise:
+    General Mobility Workout
+
+7. Error Handling
+◦ Missing city name
+◦ Missing API key
+◦ API request failure
+◦ Bad API response
+◦ Empty weather data
+
+8. Final Project
+◦ Build the full CLI app:
+    go run . Nairobi
+◦ Expected output:
+    City: Nairobi
+    Condition: Clear
+    Fitness Recommendation: Outdoor Sprint
+````
 **AI response summary:**
 
 The AI created a Go CLI application with `main.go` and `go.mod`. It used `net/http` to fetch current weather data, `encoding/json` to parse the response, and environment variables to keep the API key out of the source code.
@@ -206,13 +279,8 @@ The response was helpful because it produced a working project structure and inc
 **Prompt used:**
 
 ```text
-Update the readme file with the adding the following details...
+Update the README file to make it beginner-friendly, goal-focused, and clearly structured. Explain the project flow step by step so a beginner can understand how the Go CLI application works from receiving a city name, reading the API key, calling the OpenWeatherMap API, parsing the JSON response, and printing a fitness recommendation. Include setup instructions, system requirements, usage examples, expected output, and short explanations of the key Go packages used.
 ```
-
-**Link to the curriculum for the prompt:**
-
-Add your course, assignment, or curriculum link here.
-
 **AI response summary:**
 
 The AI expanded the README into a beginner-friendly guide with objectives, technology summary, system requirements, setup instructions, a minimal working example, troubleshooting notes, and references.
